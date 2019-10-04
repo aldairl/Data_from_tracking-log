@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from connect_ssh import views as conn_ssh
+from django.http import HttpResponse, JsonResponse
 #utilities
 import pickle
 from io import open
@@ -30,8 +31,7 @@ def data(request):
 	else:
 
 		mytime = info[-1]['time']
-		print(mytime)
-
+		
 		for n in stdout:
 
 			objson = json.loads(n)
@@ -45,13 +45,31 @@ def data(request):
 
 				info.append(objson)
 
-				print("Ip: {} event: {} time {}".format(objson['ip'], objson['event'], objson['time']))
+				#print("Ip: {} event: {} time {}".format(objson['ip'], objson['event'], objson['time']))
 
 		file = open("registry.txt", "wb")
+		print("saving changes")
 		pickle.dump(info, file)
 		file.close()
+		#print(info[-1])
 
-	return render(request, 'data.html', {'data':info[-4:]})
+	#data(request)
+
+	return render(request, 'data.html', {'data':info[-20:]})
+
+
+def obj(request):
+
+	file = open("/home/thinking/ironwood/python_scripts/registry.txt", "rb+")
+	info = pickle.load(file)
+	file.close()
+
+	obj = info[-2]
+
+	return JsonResponse(obj)
+	#return HttpResponse(obj)
+
+
 
 
 

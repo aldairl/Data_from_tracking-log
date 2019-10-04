@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="refresh" content="5" >
 	<title>User Events</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -9,21 +10,27 @@
 <table class="table table-dark">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">User_id</th>
       <th scope="col">Username</th>
       <th scope="col">ip</th>
       <th scope="col">event</th>
       <th scope="col">Time</th>
+      <th scope="col">Source event</th>
+      <th scope="col">Session</th>
+      <th scope="col">display_name</th>
     </tr>
   </thead>
   <tbody>
   	{% for d in data %}
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">{{d.context.user_id}}</th>
       <td>{{d.username}}</td>
       <td>{{d.ip}}</td>
       <td>{{d.event_type}}</td>
       <td>{{d.time}}</td>
+      <td>{{d.event_source}}</td>
+      <td>{{d.session}}</td>
+      <td>{{d.context.module.display_name}}</td>
     </tr>
     {% endfor %}
   </tbody>

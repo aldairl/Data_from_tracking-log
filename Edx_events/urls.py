@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('numbers/', local_views.numbers),
     path('events/', user_views.data),
+    path('json/', user_views.obj),
 ]

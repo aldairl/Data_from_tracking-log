@@ -1,6 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Event(models.model):
+#class Event(models.model):
 
 	
