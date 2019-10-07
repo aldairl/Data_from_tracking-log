@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from connect_ssh import views as conn_ssh
 from django.http import HttpResponse, JsonResponse
+
 #utilities
 import pickle
 from io import open
@@ -15,7 +16,7 @@ def data(request):
 	delta = timedelta(hours=5)
 
 	#open file
-	file = open("/home/thinking/ironwood/python_scripts/registry.txt", "rb+")
+	file = open("registry.txt", "rb+")
 	info = pickle.load(file)
 	file.close()
 
@@ -26,7 +27,7 @@ def data(request):
 
 	except:
 		print('Connection Failled')
-		print(info[-5])
+		#print(info[-5])
 
 	else:
 
@@ -53,14 +54,12 @@ def data(request):
 		file.close()
 		#print(info[-1])
 
-	#data(request)
-
 	return render(request, 'data.html', {'data':info[-20:]})
 
 
 def obj(request):
 
-	file = open("/home/thinking/ironwood/python_scripts/registry.txt", "rb+")
+	file = open("registry.txt", "rb+")
 	info = pickle.load(file)
 	file.close()
 
