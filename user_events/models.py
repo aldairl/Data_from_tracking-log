@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+"""# Create your models here.
 class Event(models.Model):
 
     id_user = models.CharField(max_length=50, blank=True, null=True)
@@ -16,6 +16,4 @@ class Event(models.Model):
     session = models.CharField(max_length = 150, blank = True, null = True)
     course = models.CharField(max_length = 150, blank = True, null = True)
     answers = models.CharField(max_length = 150, blank = True, null = True)
-
-
-	
+    """

@@ -4,7 +4,7 @@ import paramiko
 class Conection_ssh():
 	"""create a client for Conection_ssh"""
 
-	def __init__(self, ip='192.168.190.3', port='22', username='vagrant', password='vagrant', command = 'cat /edx/var/log/tracking/tracking.log'):
+	def __init__(self, ip='192.168.0.3', port='22', username='vagrant', password='vagrant', command = 'cat /edx/var/log/tracking/tracking.log'):
 		
 		self.ip = ip
 		self.port = port
@@ -29,6 +29,6 @@ class Conection_ssh():
 		print("closing connection")
 		client.close()
 
-		print("return output..")		
+		print("return output..")
 
 		return stdout
